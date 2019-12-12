@@ -97,7 +97,7 @@ decide_python_cmd() {
 #######################################
 create_using_python3_venv() {
   [[ $DO_DEBUG == true ]] && display_debug "Creating virtualenv using python3 venv."
-  python3 -m venv venv
+  python3.6 -m venv venv
   return $?
 }
 
@@ -116,7 +116,7 @@ create_using_virtualenv() {
   if [[ $? -ne 0 ]]; then
     return 1
   else
-    $1 -m virtualenv venv ${QQ:+-q}
+    $1 -m virtualenv venv --python=python3.6 ${QQ:+-q}
     return $?
   fi
 }
